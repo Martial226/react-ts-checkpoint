@@ -1,69 +1,31 @@
-# React + TypeScript + Vite
+#  Point de Contrôle : Création d'applications React avec TypeScript
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Ce projet est une conversion de composants React écrits en JavaScript vers TypeScript, dans le cadre du point de contrôle "Créer des applications React avec TypeScript".
 
-Currently, two official plugins are available:
+##  Objectif
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Comprendre et utiliser TypeScript avec React.
+- Convertir des composants fonctionnels et des classes en TypeScript.
+- Utiliser les interfaces pour typer les props et le state.
 
-## Expanding the ESLint configuration
+##  Étapes de conversion
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+1. **Initialisation du projet avec Vite** :
+   - Commande : `npm create vite@latest react-ts-checkpoint --template react-ts`
+   - On choisit le variant `react-ts` pour avoir directement le support TypeScript.
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+2. **Création de deux composants dans le dossier `components`** :
+   - `Greeting.tsx` (fonctionnel avec props typées)
+   - `Counter.tsx` (classe avec props et state typés)
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+3. **Ajout d’interfaces TypeScript** :
+   - `GreetingProps` pour les props de `Greeting`
+   - `CounterProps` et `CounterState` pour `Counter`
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+4. **Remplacement du type `any` par des types explicites** :
+   - `string`, `number`, etc.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+5. **Ajout de commentaires dans le code pour expliquer chaque modification.**
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+##  Structure du projet
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
